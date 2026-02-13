@@ -104,4 +104,29 @@ var nome$ = "nome"
 
 
 
-Int32.max
+print(Int32.max)
+
+
+
+func soma(a:Int, b:Int){
+    
+    a+b
+}
+
+
+func mymax (_ num1:Int secondNumber num2: Int) -> Int {
+   
+   /* local variable declaration */
+   var result;
+ 
+   if (num1 > num2) {
+      result = num1;
+   } else {
+      result = num2;
+   }
+ 
+   return result;
+}
+
+
+mymax(12, secondNumber: 42)
