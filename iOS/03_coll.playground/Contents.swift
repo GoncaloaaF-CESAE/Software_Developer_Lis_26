@@ -249,7 +249,7 @@ print("---")
 
 for elm in capitais{
     
-    print(elm.self)
+    print(elm)
     print(elm.key)
     print(elm.value)
     print("--")
@@ -297,3 +297,78 @@ for elm in capitais.values{
     print(elm)
     print("--")
 }
+
+
+print("---------- Sets ------------")
+
+
+var mySet:Set<String> = []
+
+var mySet2 = Set<String>()
+
+
+var mySet3:Set = ["Ovos", "Farinha", "Açucar"]
+
+let adicionado = mySet3.insert("Oleo").inserted
+
+adicionado
+mySet3
+
+
+let adicionado2 = mySet3.insert("Oleo").inserted
+
+adicionado2
+mySet3
+
+
+_ = mySet3.insert("Iogurte").inserted
+
+var aux = "Mel"
+
+mySet3.insert(aux).inserted
+mySet3.remove("Mel") // se existe retorna o valor
+mySet3.remove("Mel") // se  não existe retorna o nil
+mySet3.contains("Oleo")
+mySet3.contains("Mel")
+
+mySet3.first
+mySet3.popFirst()
+
+
+
+mySet3
+
+var mySet4:Set = ["Açucar", "Farinha", "Ovos", "Farinha", "Leite"]
+
+
+
+
+var newSet = mySet3.intersection(mySet4)
+print(newSet)
+
+var newSet2 = mySet3.symmetricDifference(mySet4)
+
+print(newSet2)
+
+
+
+
+var newSet3 = mySet3.union(mySet4)
+var newSet5 = mySet4.union(mySet3)
+print("--")
+print(mySet3)
+print(mySet4)
+print("--")
+print(newSet3)
+
+print("--")
+print("--")
+
+
+var r1 = mySet3.subtracting(mySet4)
+
+print(r1)
+
+var r2 = mySet4.subtracting(mySet3)
+
+print(r2)
