@@ -191,3 +191,109 @@ arr9.reduce(into:0) { pr, i in
 
 
 
+
+
+print("---------- Dicts ------------")
+
+let dict = ["key":31, "key2":34, "key3":41]
+
+
+print(dict["key2"]!)
+
+dict.count
+dict.capacity
+
+
+
+dict.keys
+dict.values
+dict
+
+
+print(dict["key5"])
+
+
+let dict2:[String:Any] = ["key":"Gonçalo", "key2":34, "key3":true] // <-- evitar
+
+
+/*
+ 
+ capitalCities.put("England", "London");
+  capitalCities.put("India", "New Dehli");
+  capitalCities.put("Austria", "Wien");
+  capitalCities.put("Norway", "Oslo");
+  capitalCities.put("Norway", "Oslo"); // Duplicate
+  capitalCities.put("USA", "Washington DC");
+ */
+
+var capitais:[String:String] = [:]
+
+capitais["England"] = "London"
+capitais["India"] = "New Dehli"
+
+
+capitais.removeValue(forKey: "England")
+capitais.removeValue(forKey: "England")
+
+capitais["England"] = "London"
+capitais["England"] = nil // nil -> null
+
+
+capitais["England"] = "London"
+capitais["India"] = "New Dehli"
+capitais["Austria"] = "Wien"
+capitais["Norway"] = "Oslo"
+capitais["USA"] = "Washington DC"
+
+print("---")
+
+for elm in capitais{
+    
+    print(elm.self)
+    print(elm.key)
+    print(elm.value)
+    print("--")
+}
+print("---")
+
+
+
+
+for (pais,capital) in capitais{
+    
+    print(pais)
+    print(capital)
+    print("--")
+}
+
+
+capitais.forEach { pais, capital in
+    print(pais)
+    print(capital)
+    print("--")
+}
+
+
+capitais.forEach {
+    print($0)
+    print($1)
+    print("--")
+}
+
+
+
+print("------")
+
+for elm in capitais.keys{
+    
+    print(elm)
+    print("--")
+}
+
+print("------")
+
+for elm in capitais.values{
+    
+    print(elm)
+    print("--")
+}
