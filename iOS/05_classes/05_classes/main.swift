@@ -9,11 +9,11 @@
 /*
  class
  structs
- 
+ extension
  
  amanhã
  
- extension
+ 
  
  Propriedades
  herança
@@ -152,5 +152,6 @@ let novoAluno2 = Aluno(nome: "Maria", media: 0)
 let novoAluno3 = Aluno(nome: "Maria", media: 0)
 
 
+print(novoAluno2.nome == novoAluno3.nome)
 // print(novoAluno2 == novoAluno3) <- nao fazem comparações
 
