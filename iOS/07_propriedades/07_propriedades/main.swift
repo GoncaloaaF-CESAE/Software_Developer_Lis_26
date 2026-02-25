@@ -117,6 +117,7 @@ cacluladora(23, 222) { i, j in
 
 var q = Quadrado(lado: 4)
 
+/*
 print(q.area)
 print(q.lado)
 
@@ -129,5 +130,9 @@ print(q.lado)
 
 
 q.area = 25
+
+q.lado = 10
+*/
+
 
 q.lado = 10
