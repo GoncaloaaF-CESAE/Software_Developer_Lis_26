@@ -8,20 +8,24 @@
 import SwiftUI
 
 struct InfoView: View {
+    var user:User
+    
     var body: some View {
+        
+        
         VStack{
-            NavigationLink("pagina 3") {
-                Text("Pagina 3")
-            }
-            
-            Text("Pagina 2")
+            Text(user.nome)
                 .font(.largeTitle)
                 .fontWeight(.heavy)
         }
-        .navigationTitle("pagina 2")
+        .navigationTitle("prefil de \(user.nome)")
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 
+
+
 #Preview {
-    InfoView()
+    InfoView(user: User(nome: "Gonçalo", idade: 21))
 }
+

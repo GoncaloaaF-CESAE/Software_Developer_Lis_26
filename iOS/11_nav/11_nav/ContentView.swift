@@ -7,28 +7,40 @@
 
 import SwiftUI
 
+
+struct User{
+    var nome:String
+    var idade:Int
+    
+}
 struct ContentView: View {
+    var my_user = User(nome: "Rita", idade: 30)
+    
     var body: some View {
-        
+      
         NavigationStack{
             
-            HStack {
-                
+            VStack {
+            
+
                 NavigationLink {
-                    InfoView()
+                    InfoView(user: my_user)
                 } label: {
-                    HStack {
-                        Image(systemName: "globe")
-                            .imageScale(.large)
-                            .foregroundStyle(.tint)
-                        Text("Hello, world!")
-                    }
+                    BtnView()
                 }
 
+            
+                NavigationLink {
+                    ContactosView()
+                } label: {
+                    BtnView(img: "pencil.circle.fill", txt: "Pagina 2")
+                }
+                 
+     
             }// HStack
             .navigationTitle("pagina 1")
-
-         
+            .navigationBarTitleDisplayMode(.inline)
+                
         }//NavigationStack
        
     }
