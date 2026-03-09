@@ -5,7 +5,7 @@
 //  Created by Gonçalo Feliciano on 06/03/2026.
 //
 
-//  guess the number 
+// Crie a app guess the number em ios com MVVM
 
 import SwiftUI
 
@@ -39,6 +39,8 @@ struct ContentView: View {
                     Text("mudar Texto")
                 }
                 .disabled(vm.msg_TF.isEmpty)
+                
+                
                 
             }// Hstack
         } // VStack
