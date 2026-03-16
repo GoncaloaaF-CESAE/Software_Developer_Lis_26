@@ -14,17 +14,24 @@ import Observation
 class ContentViewModel {
     
     var text: String = "Load Post"
-   ///private var api = APIHandler(baseURL: "https://jsonplaceholder.typicode.com")
+    ///private var api = APIHandler(baseURL: "https://jsonplaceholder.typicode.com")
     var post:Post?
-    
+    var allPosts:Posts = []
     var showPost = true
-    var id = 1
+    
+    var id = 1 {
+        didSet {
+            Task {
+                await loadPost()   
+            }
+        }
+    }
     
     
     
     func loadPost() async{
       
-        self.post = await APIHandler.shared.loadPost(with: 1)
+        self.post = await APIHandler.shared.loadPost(with: id)
         
 
     }
@@ -32,7 +39,7 @@ class ContentViewModel {
 
     func loadAllPost() async{
       
-        await APIHandler.shared.loadAllPost()
+        allPosts = await APIHandler.shared.loadAllPost()
         
 
     }

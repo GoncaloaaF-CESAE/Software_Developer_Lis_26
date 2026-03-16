@@ -25,9 +25,8 @@ struct ContentView: View {
             
             Text("\(vm.id)")
             
-            Stepper("post id", value: $vm.id, in: 1...10, step: 1)
+            Stepper("post id", value: $vm.id, in: 1...15, step: 1)
                 .labelsHidden()
-            
             
             Button {
                 Task {
@@ -49,9 +48,7 @@ struct ContentView: View {
             }
         }
         .padding()
-        //  .task {
-        //    await vm.loadPost()
-       // }
+        
     }
 }
 
