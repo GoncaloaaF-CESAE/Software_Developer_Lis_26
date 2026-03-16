@@ -13,13 +13,45 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Text(vm.text)
             
+         
+        
+            Text(vm.post?.title ?? "Loading...")
+            .opacity(vm.showPost ? 1 : 0)
+            
+            
+            Toggle("show Post", isOn: $vm.showPost)
+                .labelsHidden()
+            
+            Text("\(vm.id)")
+            
+            Stepper("post id", value: $vm.id, in: 1...10, step: 1)
+                .labelsHidden()
+            
+            
+            Button {
+                Task {
+                    await vm.loadPost()
+                    
+                }
+            } label: {
+                
+                Text(vm.text)
+            }
+
+            Button {
+                vm.showPost.toggle()
+                Task {
+                    await vm.loadPost()
+                }
+            } label: {
+                Text("Ler Todos")
+            }
         }
         .padding()
-        .onAppear {
-            vm.api.loadPost(with: 1)
-        }
+        //  .task {
+        //    await vm.loadPost()
+       // }
     }
 }
 

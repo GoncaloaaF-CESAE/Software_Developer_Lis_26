@@ -6,8 +6,6 @@
 //
 
 import Foundation
-
-
 import Observation
 
 
@@ -15,7 +13,28 @@ import Observation
 @Observable
 class ContentViewModel {
     
-    var text: String = "Ola Mundo"
-    var api = APIHandler(baseURL: "https://jsonplaceholder.typicode.com")
+    var text: String = "Load Post"
+   ///private var api = APIHandler(baseURL: "https://jsonplaceholder.typicode.com")
+    var post:Post?
+    
+    var showPost = true
+    var id = 1
+    
+    
+    
+    func loadPost() async{
+      
+        self.post = await APIHandler.shared.loadPost(with: 1)
+        
+
+    }
+    
+
+    func loadAllPost() async{
+      
+        await APIHandler.shared.loadAllPost()
+        
+
+    }
     
 }
