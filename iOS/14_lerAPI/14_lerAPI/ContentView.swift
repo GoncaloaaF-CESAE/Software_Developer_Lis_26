@@ -18,6 +18,7 @@ struct ContentView: View {
         
             Text(vm.post?.title ?? "Loading...")
             .opacity(vm.showPost ? 1 : 0)
+            .frame(height: 50, alignment: .top)
             
             
             Toggle("show Post", isOn: $vm.showPost)
@@ -27,7 +28,8 @@ struct ContentView: View {
             
             Stepper("post id", value: $vm.id, in: 1...15, step: 1)
                 .labelsHidden()
-            
+        
+            /*
             Button {
                 Task {
                     await vm.loadPost()
@@ -37,11 +39,11 @@ struct ContentView: View {
                 
                 Text(vm.text)
             }
-
+*/
             Button {
                 vm.showPost.toggle()
                 Task {
-                    await vm.loadPost()
+                    await vm.loadAllPost()
                 }
             } label: {
                 Text("Ler Todos")

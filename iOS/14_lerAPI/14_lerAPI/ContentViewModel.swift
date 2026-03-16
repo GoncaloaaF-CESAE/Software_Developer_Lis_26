@@ -5,7 +5,6 @@
 //  Created by Gonçalo Feliciano on 16/03/2026.
 //
 
-import Foundation
 import Observation
 
 
@@ -27,21 +26,14 @@ class ContentViewModel {
         }
     }
     
-    
-    
-    func loadPost() async{
-      
-        self.post = await APIHandler.shared.loadPost(with: id)
-        
 
+    func loadPost() async{
+        self.post = await APIHandler.shared.loadPost(with: id)
     }
     
 
     func loadAllPost() async{
-      
         allPosts = await APIHandler.shared.loadAllPost()
-        
-
     }
     
 }
