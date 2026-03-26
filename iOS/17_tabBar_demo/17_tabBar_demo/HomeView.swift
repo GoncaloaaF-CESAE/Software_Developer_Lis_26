@@ -1,6 +1,6 @@
 //
-//  ContentView.swift
-//  16_swiftData
+//  HomeView.swift
+//  17_tabBar_demo
 //
 //  Created by Gonçalo Feliciano on 25/03/2026.
 //
@@ -8,25 +8,26 @@
 import SwiftUI
 import SwiftData
 
-struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
+struct HomeView: View {
     
-    @Query private var todos: [Todo] // Select * from Todo
-
+    @Environment(\.modelContext) private var modelContext
+    @Query private var items: [Item]
+    
+    
     var body: some View {
-        NavigationView {
+        NavigationSplitView {
             List {
-                ForEach(todos) { todo in
+                ForEach(items) { item in
                     NavigationLink {
-
+                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
                     } label: {
-                        Text(todo.title)
+                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
                     }
                 }
                 .onDelete(perform: deleteItems)
             }
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
+                ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
                 }
                 ToolbarItem {
@@ -35,26 +36,27 @@ struct ContentView: View {
                     }
                 }
             }
-        
+        } detail: {
+            Text("Select an item")
         }
     }
 
     private func addItem() {
-      
-            let todo = Todo(title: "todo 1")
-            modelContext.insert(todo)
+        withAnimation {
+            let newItem = Item(timestamp: Date())
+            modelContext.insert(newItem)
+        }
     }
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             for index in offsets {
-                modelContext.delete(todos[index])
+                modelContext.delete(items[index])
             }
         }
     }
 }
 
 #Preview {
-    ContentView()
-        .modelContainer(for: Todo.self, inMemory: true)
+    HomeView()
 }
