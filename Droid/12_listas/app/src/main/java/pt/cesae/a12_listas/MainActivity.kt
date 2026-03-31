@@ -199,5 +199,7 @@ Crie um Guess the Number em kotlin e jetpack compose.
 crie também uma lista com todos os palpites do utilizador
 e indique se maior ou menor
 
+a app deve seguir o padrão mvvm
+
 
  */
