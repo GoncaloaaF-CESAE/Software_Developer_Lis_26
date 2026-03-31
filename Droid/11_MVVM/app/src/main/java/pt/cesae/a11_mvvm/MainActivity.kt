@@ -98,7 +98,7 @@ fun MainPage(viewModel: MainViewModel){
 
         )
 
-        
+
         Button({
             //viewModel.txt.value = "Novo Valor"
             if (novoNome.length > 3){
