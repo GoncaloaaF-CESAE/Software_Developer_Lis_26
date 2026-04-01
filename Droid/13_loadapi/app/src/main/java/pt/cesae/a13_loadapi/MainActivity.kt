@@ -8,15 +8,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import pt.cesae.a13_loadapi.ui.theme._13_loadapiTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +34,6 @@ class MainActivity : ComponentActivity() {
                     Text("Load all")
                 }
 
-
                 Button(onClick = {
                     Log.d("Aula", "Load cmt id 1")
 
@@ -47,8 +41,10 @@ class MainActivity : ComponentActivity() {
                     Text("Load id 1")
                 }
             }
-
-
         }
     }
+
+    fun loadAllComments(){}
+
+    fun loadComment(id: Int){}
 }
