@@ -7,10 +7,13 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -22,7 +25,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Column(verticalArrangement = Arrangement.Center,
-                modifier = Modifier.fillMaxSize()) {
+                modifier = Modifier.fillMaxSize()
+                    .padding(15.dp)) {
 
                 AppNav()
 
@@ -46,18 +50,24 @@ fun AppNav(){
             HomeScreen(navController)
         }
 
-        composable("detalhe") {
-            Detalhes(navController) // composable com a lista de produtos
+        composable("detalhe/{nome}") {
+            val nome = it.arguments?.getString("nome")
+            Detalhes(navController, nome) // composable com a lista de produtos
         }
     }
 }
+
+
+// no Composable home receber um nome de uma caixa de texto e passar esse nome para o
+// Composable de detalhes
 
 @Composable
 fun HomeScreen(navController: NavController){
     Column {
         Text("Conteúdo da 1ª página")
+        
         Button(onClick = {
-            navController.navigate("detalhe")
+            navController.navigate("detalhe/Novo_nome")
         }) {
             Text("ir para Detalhes")
         }
@@ -65,8 +75,11 @@ fun HomeScreen(navController: NavController){
 }
 
 @Composable
-fun Detalhes(navController: NavController){
+fun Detalhes(navController: NavController, nome: String?){
     Column {
+
+        Text("nome: $nome")
+
         Text("Pagina de detalhes")
         Button(onClick = {
             navController.popBackStack()
