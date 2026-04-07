@@ -18,7 +18,7 @@ object AlunoRepository {
 
 
     private val _alunoSelecionado = MutableStateFlow<Aluno?>(null)
-    private val alunoSelecionado = _alunoSelecionado.asStateFlow()
+    val alunoSelecionado = _alunoSelecionado.asStateFlow()
 
 
 
