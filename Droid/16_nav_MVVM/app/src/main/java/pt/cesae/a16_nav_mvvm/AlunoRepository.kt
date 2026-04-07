@@ -20,16 +20,23 @@ object AlunoRepository {
     private val _alunoSelecionado = MutableStateFlow<Aluno?>(null)
     val alunoSelecionado = _alunoSelecionado.asStateFlow()
 
-
-
     fun selecionarAluno(aluno: Aluno){
         // validar se aluno existe
         _alunoSelecionado.value = aluno
     }
 
-
     fun atualizarAluno(alunoAtulizado: Aluno){
-        Log.d("Aula", "update aluno")
+        // atualizar lista
+        _alunos.value = _alunos.value.map { alunoLista ->
+           if(alunoLista.id == alunoAtulizado.id) alunoAtulizado else alunoLista
+        }
+
+        //atualizar selecionado
+        if(_alunoSelecionado.value?.id == alunoAtulizado.id){
+            _alunoSelecionado.value = alunoAtulizado
+        }
+
+
 
     }
 

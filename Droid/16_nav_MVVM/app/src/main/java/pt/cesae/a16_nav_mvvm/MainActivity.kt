@@ -62,7 +62,10 @@ fun appNav(){
 
         composable("detalhe") {
 
-            Detalhe()
+            Detalhe(onVoltar = {
+                navController.popBackStack()
+
+            })
         }
 
 
@@ -111,7 +114,10 @@ fun listaAlunos(
 
 
 @Composable
-fun Detalhe(){
+fun Detalhe(
+    onVoltar: () -> Unit
+
+){
     val vm: DetalheViewModel = viewModel()
     val aluno by vm.alunoSelecionado.collectAsState()
 
@@ -141,9 +147,7 @@ fun Detalhe(){
 
 
             Button(
-                onClick = {
-                    
-                },
+                onClick = onVoltar,
                 modifier = Modifier.padding(top = 16.dp)
             ) {
                 Text("Voltar")
